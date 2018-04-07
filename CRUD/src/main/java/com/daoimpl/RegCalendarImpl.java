@@ -7,30 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
  
-import com.daoapi.UsersDao;
-import com.entities.Users;
+import com.daoapi.RegCalendarDao;
+import com.entities.RegCalendar;
  
-@Repository("UsersDao")
+@Repository("RegCalendarDao")
 @Transactional
-public class UsersImpl implements UsersDao {
+public class RegCalendarImpl implements RegCalendarDao {
  
     @Autowired
     SessionFactory session;
  
-    public boolean saveOrUpdate(Users users) {
+    public boolean saveOrUpdate(RegCalendar regCalendar) {
         // TODO Auto-generated method stub
-        session.getCurrentSession().saveOrUpdate(users);
+        session.getCurrentSession().saveOrUpdate(regCalendar);
 
         return true;
     }
  
-    public List<Users> list() {
-        return session.getCurrentSession().createQuery("from Users").list();
+    public List<RegCalendar> list() {
+        return session.getCurrentSession().createQuery("from RegCalendar").list();
     }
  
-    public boolean delete(Users users) {
+    public boolean delete(RegCalendar regCalendar) {
         try {
-            session.getCurrentSession().delete(users);
+            session.getCurrentSession().delete(regCalendar);
         } catch (Exception ex) {
             return false;
         }

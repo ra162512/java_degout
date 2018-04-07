@@ -7,30 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
  
-import com.daoapi.UsersDao;
-import com.entities.Users;
+import com.daoapi.AbsenceDao;
+import com.entities.Absence;
  
-@Repository("UsersDao")
+@Repository("AbsenceDao")
 @Transactional
-public class UsersImpl implements UsersDao {
+public class AbsenceImpl implements AbsenceDao {
  
     @Autowired
     SessionFactory session;
  
-    public boolean saveOrUpdate(Users users) {
+    public boolean saveOrUpdate(Absence absence) {
         // TODO Auto-generated method stub
-        session.getCurrentSession().saveOrUpdate(users);
+        session.getCurrentSession().saveOrUpdate(absence);
 
         return true;
     }
  
-    public List<Users> list() {
-        return session.getCurrentSession().createQuery("from Users").list();
+    public List<Absence> list() {
+        return session.getCurrentSession().createQuery("from Absence").list();
     }
  
-    public boolean delete(Users users) {
+    public boolean delete(Absence absence) {
         try {
-            session.getCurrentSession().delete(users);
+            session.getCurrentSession().delete(absence);
         } catch (Exception ex) {
             return false;
         }

@@ -7,30 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
  
-import com.daoapi.UsersDao;
-import com.entities.Users;
+import com.daoapi.DayOffDao;
+import com.entities.DayOff;
  
-@Repository("UsersDao")
+@Repository("DayOffDao")
 @Transactional
-public class UsersImpl implements UsersDao {
+public class DayOffImpl implements DayOffDao {
  
     @Autowired
     SessionFactory session;
  
-    public boolean saveOrUpdate(Users users) {
+    public boolean saveOrUpdate(DayOff dayOff) {
         // TODO Auto-generated method stub
-        session.getCurrentSession().saveOrUpdate(users);
+        session.getCurrentSession().saveOrUpdate(dayOff);
 
         return true;
     }
  
-    public List<Users> list() {
-        return session.getCurrentSession().createQuery("from Users").list();
+    public List<DayOff> list() {
+        return session.getCurrentSession().createQuery("from DayOff").list();
     }
  
-    public boolean delete(Users users) {
+    public boolean delete(DayOff dayOff) {
         try {
-            session.getCurrentSession().delete(users);
+            session.getCurrentSession().delete(dayOff);
         } catch (Exception ex) {
             return false;
         }

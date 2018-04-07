@@ -7,30 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
  
-import com.daoapi.UsersDao;
-import com.entities.Users;
+import com.daoapi.ChildDao;
+import com.entities.Child;
  
-@Repository("UsersDao")
+@Repository("ChildDao")
 @Transactional
-public class UsersImpl implements UsersDao {
+public class ChildImpl implements ChildDao {
  
     @Autowired
     SessionFactory session;
  
-    public boolean saveOrUpdate(Users users) {
+    public boolean saveOrUpdate(Child child) {
         // TODO Auto-generated method stub
-        session.getCurrentSession().saveOrUpdate(users);
+        session.getCurrentSession().saveOrUpdate(child);
 
         return true;
     }
  
-    public List<Users> list() {
-        return session.getCurrentSession().createQuery("from Users").list();
+    public List<Child> list() {
+        return session.getCurrentSession().createQuery("from Child").list();
     }
  
-    public boolean delete(Users users) {
+    public boolean delete(Child child) {
         try {
-            session.getCurrentSession().delete(users);
+            session.getCurrentSession().delete(child);
         } catch (Exception ex) {
             return false;
         }
